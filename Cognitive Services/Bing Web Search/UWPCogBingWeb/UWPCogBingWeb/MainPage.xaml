@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="UWPCogBingWeb.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPCogBingWeb"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.Resources>
+            <CollectionViewSource x:Name="SearchResultsCol" Source="{x:Bind SearchResults}" IsSourceGrouped="False" />
+        </Grid.Resources>
+
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="155,51,0,0" TextWrapping="Wrap" Text="UWP Cognitive Service Websearch API Demo" VerticalAlignment="Top" FontWeight="Bold"/>
+        <AutoSuggestBox x:Name="asbWebSearch" HorizontalAlignment="Left" Margin="99,96,0,0" VerticalAlignment="Top" Width="318" PlaceholderText="Enter Search Text Here....."/>
+        <Button x:Name="btnSearch" HorizontalAlignment="Left" Margin="424,96,0,0" VerticalAlignment="Top" Height="32" Width="49" Click="btnSearch_Click">
+            <SymbolIcon Symbol="Find"/>
+        </Button>
+        <GridView x:Name="gvWeb" ItemsSource="{Binding Source={StaticResource SearchResultsCol}}" SelectionMode="None" IsItemClickEnabled="False" HorizontalAlignment="Left" Height="217" Margin="10,133,0,0" VerticalAlignment="Top" Width="620">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="AliceBlue" Width="599" Height="73" Margin="8" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1" Margin="3,3,3,10" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel>
+                                    <HyperlinkButton NavigateUri="{Binding WSer.Url}" Foreground="Black" >
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding WSer.Name}" Style="{StaticResource CaptionTextBlockStyle}" />
+                                    </HyperlinkButton>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding WSer.DisplayUrl}" Style="{StaticResource CaptionTextBlockStyle}" />
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding WSer.Snippet}" Style="{StaticResource CaptionTextBlockStyle}" />
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+    </Grid>
+</Page>

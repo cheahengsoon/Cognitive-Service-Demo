@@ -1,0 +1,1 @@
+c:\users\hhvr\documents\visual studio 2015\Projects\UWPCogFace\UWPCogFace\UWPCogFace.csproj;x86

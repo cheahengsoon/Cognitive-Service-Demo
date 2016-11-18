@@ -1,0 +1,1 @@
+C:\Users\HHVR\documents\visual studio 2015\Projects\UWPCogBingSpellCheck\UWPCogBingSpellCheck\UWPCogBingSpellCheck.csproj;x86
